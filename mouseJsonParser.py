@@ -94,7 +94,8 @@ def rawToFormattedMouseInput(newtxt):
     
     # lazy approach to ignore the input between the last click and the middle click
     os.remove(f"aim_data/sample{sample}.txt")
-                    
+
+
 def giveSampleN(n):
     data = pd.read_csv(f"aim_data/sample{n}.txt")
     return data
@@ -102,5 +103,5 @@ def giveSampleN(n):
 # to format the data right after recording use mouseAimData()
 # then use rawToFormattedMouseInput("mouse_log.txt") to obtain the single txt samples in aim_data/
 
-mouseAimData()
-# rawToFormattedMouseInput("new_mouse_log.txt")
+# mouseAimData()
+rawToFormattedMouseInput("new_mouse_log.txt")
