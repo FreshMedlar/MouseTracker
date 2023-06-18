@@ -16,7 +16,6 @@ def on_move(x, y):
 
 def on_click(x, y, button, pressed):
     if pressed:
-        print("premuto")
         logging.info('C,{0},{1},{2}'.format(x, y, button))
 
 def moveListener():
