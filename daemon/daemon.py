@@ -1,38 +1,17 @@
 from pynput.mouse import Listener
 import logging
-import threading
-import time
-import os
 
-
-# logging.basicConfig(filename="mouse_log.txt", level=logging.DEBUG, format='%(asctime)s:%(msecs)03d,%(message)s', datefmt='%H:%M:%S')
-
-
+logging.basicConfig(filename="mouse_log.txt", level=logging.DEBUG, format='%(asctime)s: %(message)s')
 
 def on_move(x, y):
-    logging.info("{0},{1}".format(x, y))
+    logging.info("Mouse moved to ({0}, {1})".format(x, y))
 
 def on_click(x, y, button, pressed):
     if pressed:
-        logging.info('C,{0},{1},{2}'.format(x, y, button))
+        logging.info('Mouse clicked at ({0}, {1}) with {2}'.format(x, y, button))
 
-def moveListener():
-    with Listener(on_move=on_move) as listener:
-        listener.join()
+def on_scroll(x, y, dx, dy):
+    logging.info('Mouse scrolled at ({0}, {1})({2}, {3})'.format(x, y, dx, dy))
 
-def clickListener():
-    with Listener(on_click=on_click) as listener:
-        listener.join()
-
-try:
-    os.remove("mouse_log.txt")
-except FileNotFoundError:
-    pass
-
-logging.basicConfig(filename="mouse_log.txt", level=logging.DEBUG, format='%(asctime)s:%(msecs)03d,%(message)s', datefmt='%H:%M:%S')
-
-click = threading.Thread(target=clickListener).start()
-move = threading.Thread(target=moveListener).start()
-
-click.join()
-move.join()
+with Listener(on_move=on_move, on_click=on_click, on_scroll=on_scroll) as listener:
+    listener.join()
