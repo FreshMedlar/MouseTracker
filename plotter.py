@@ -7,19 +7,20 @@ def mousePlot(file):
 
     # plot
     fig, ax = plt.subplots()
-    ax.set_xlim(0, 3000)
-    ax.set_ylim(0, 3000)  
+    ax.set_xlim(0, 1920)
+    ax.set_ylim(0, 1080)  
     plt.draw()
 
     mouse_data = pd.read_csv(file)
 
     x1, y1, time1 = mouse_data['x'][0], mouse_data['y'][0], mouse_data['t'][0]
-    
+    print(x1, y1, time1)
+
     ax.plot(x1, y1, 'ro')
 
     print("Inizio disegno plot")
     for row in mouse_data.iloc:
-        x2,y2, time2 = row[2], row[1], row[0]
+        x2,y2, time2 = row[1], row[2], row[0]
         print(f"Point {x1},{y1} to {x2},{y2}")
         
         plt.pause(((time2-time1)+1)/100)
@@ -29,4 +30,4 @@ def mousePlot(file):
     print("Disegno finito")
     plt.show
 
-mousePlot("aim_data/sample2.txt")
+mousePlot("aim_data/sample8.txt")

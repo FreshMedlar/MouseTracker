@@ -103,5 +103,5 @@ def giveSampleN(n):
 # to format the data right after recording use mouseAimData()
 # then use rawToFormattedMouseInput("mouse_log.txt") to obtain the single txt samples in aim_data/
 
-# mouseAimData()
-rawToFormattedMouseInput("new_mouse_log.txt")
+mouseAimData()
+# rawToFormattedMouseInput("new_mouse_log.txt")
