@@ -21,7 +21,7 @@ def load_data(file_path_paths):
         last_y = y[-1]
         l_destination.append([last_x, last_y])
 
-        a = list(zip(x, y, t))
+        a = list(zip(x, y))
         l_path.append(a)
         l_time.append(list(zip(t)))
 
