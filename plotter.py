@@ -58,4 +58,4 @@ def mousePlotWithList(lis):
 
 
 
-#mousePlot("aim_data/sample8.txt")
+mousePlot("aim_data/sample8.txt")
